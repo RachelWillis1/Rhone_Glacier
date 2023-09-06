@@ -1,0 +1,24 @@
+ok\
+wheel
+future
+h5py
+matplotlib
+numpy
+obspy
+pandas
+pathlib
+pyasdf
+scipy
+tqdm
+
+no version\
+os
+sys
+math
+glob
+json
+warnings
+bisect
+
+error\ -ships with python?
+multiprocessing
