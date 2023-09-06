@@ -1,2 +1,2 @@
-# Rhone_Glacier
-Distributive Acoustic Sensing taken from Rhone Glacier
+
+Copy the folder to S3 bucket csm-luna/
