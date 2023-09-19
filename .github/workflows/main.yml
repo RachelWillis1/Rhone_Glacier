@@ -1,8 +1,7 @@
    name: "Build and push to ECR"
 on:
-  push:
-    branches: [master]
-  pull_request:
+  push
+
 jobs:
   BuildAndPushImageToECR:
     name: "Build and Push to ECR"
