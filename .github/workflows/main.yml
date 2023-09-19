@@ -1,7 +1,7 @@
-   name: "Build and push to ECR"
-on:
-  push
-
+name: Build and push to ECR
+on: 
+  push: 
+    branches: [ "master" ]
 jobs:
   BuildAndPushImageToECR:
     name: "Build and Push to ECR"
