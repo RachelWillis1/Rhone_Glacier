@@ -5,6 +5,7 @@ on:
   
 jobs:
   BuildAndPushImageToECR:
+  
     name: "Build and Push to ECR"
     runs-on: ubuntu-latest 
     steps:  
