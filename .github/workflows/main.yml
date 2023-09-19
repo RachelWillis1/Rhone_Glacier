@@ -17,6 +17,7 @@ jobs:
         with:
           aws-access-key-id: ASIA6FXGX4FDIF2KPXYZ
           aws-secret-access-key: 0LyDqTXzJNs82Is23KikwpALpUyFEAUDD2c8cfjg
+          aws-session-token: IQoJb3JpZ2luX2VjENr//////////wEaCXVzLWVhc3QtMiJHMEUCIAbqwN1uaB/GIhz2A//RKzTFleG0bs3NkUmOO09zZUt3AiEAj34YBTomyo2WFhRJ9OQpQUNobexvAGsgJEsm6HZHkxwqjAMIw///////////ARADGgw5NzQzNjc3NDQzMjYiDIoKhjWwKR7BlavJ1yrgAv6GEkrOJQ3wL2/kDay28pFuLdVKJNjsFBpih61ZFwD3NaomWhkElXNq6PSfIBRyWMeOiM3cMhT8y8li9EtULJleKRG7BRITYkpQbaZr6ZXgUiNfvWZQLyFJFuFFJy2rrW8XfZKnkdKq/ZcZ3L9kY7YjF/ZjXuzmN+gnvQAun1wkhQZZWYuRQpMLWXKAlOAGmx2xB8Hihux6JS5LZteTd8+pxuHYnjdrVE34Rl4TpAV/UAffvFfiKz9MSDbc7X9CJC1FDlYzbAwh7l9qW3j0mN9UcWq2onZzAPQ8tr+dV8QbnMGCJ7T8BVVzL1ueT1ekzWYwao8UZO9vfWpQKGIRuCI/jsBVpl06+is9ZEKv0LFse8Lz15iYMOcN4eIVxMia9GJnYwT+E7CnFPXl7rYYosxSrhk0LsSHSRb7DdKi4MnKS6Re8BMsxjXHF22EE7Fm5VudJh1MRQwk5Sqpm7v7wf0w+MGnqAY6pgFNOQH5P12Xitr5SnMUrzArjKcOW3Qurtm/w3/lJEYEMjIg4gsx1DO8y5a9nge8xCtZI/AI4xz7LXG3UXnwqU5o3PhpMYrP/etGFsX+WQJDfNx7Bxuc+C9CD+Noal6a9aMhY/NQlyKOaDk9jsCBNGXnsuvqLbZYYTXIeO8WuaDYb9A/Da2+26YQNAWFDIPBJVLbvbnfZ5dvtGKXYYqAxSvRaS5WPqz1
           aws-region: us-east-2
 
       - name: Login to Amazon ECR
