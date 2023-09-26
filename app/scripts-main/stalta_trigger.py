@@ -19,6 +19,8 @@ import settings
 # from pydvs.readers import das_reader as reader
 from readers import das_reader as reader
 
+sys.stdout = sys.__stdout__
+
 # Set multiprocessing method to `fork`, if not default
 mp.set_start_method("fork")
 
