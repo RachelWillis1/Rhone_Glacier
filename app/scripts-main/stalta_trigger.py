@@ -18,6 +18,7 @@ from obspy.signal.trigger import recursive_sta_lta, trigger_onset
 import settings
 # from pydvs.readers import das_reader as reader
 from readers import das_reader as reader
+import sys
 
 sys.stdout = sys.__stdout__
 
