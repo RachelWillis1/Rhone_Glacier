@@ -12,12 +12,15 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Make the script files executable
+        run: chmod +x app/scripts-main/job.sh
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ASIA6FXGX4FDIF2KPXYZ
-          aws-secret-access-key: 0LyDqTXzJNs82Is23KikwpALpUyFEAUDD2c8cfjg
-          aws-session-token: IQoJb3JpZ2luX2VjENr//////////wEaCXVzLWVhc3QtMiJHMEUCIAbqwN1uaB/GIhz2A//RKzTFleG0bs3NkUmOO09zZUt3AiEAj34YBTomyo2WFhRJ9OQpQUNobexvAGsgJEsm6HZHkxwqjAMIw///////////ARADGgw5NzQzNjc3NDQzMjYiDIoKhjWwKR7BlavJ1yrgAv6GEkrOJQ3wL2/kDay28pFuLdVKJNjsFBpih61ZFwD3NaomWhkElXNq6PSfIBRyWMeOiM3cMhT8y8li9EtULJleKRG7BRITYkpQbaZr6ZXgUiNfvWZQLyFJFuFFJy2rrW8XfZKnkdKq/ZcZ3L9kY7YjF/ZjXuzmN+gnvQAun1wkhQZZWYuRQpMLWXKAlOAGmx2xB8Hihux6JS5LZteTd8+pxuHYnjdrVE34Rl4TpAV/UAffvFfiKz9MSDbc7X9CJC1FDlYzbAwh7l9qW3j0mN9UcWq2onZzAPQ8tr+dV8QbnMGCJ7T8BVVzL1ueT1ekzWYwao8UZO9vfWpQKGIRuCI/jsBVpl06+is9ZEKv0LFse8Lz15iYMOcN4eIVxMia9GJnYwT+E7CnFPXl7rYYosxSrhk0LsSHSRb7DdKi4MnKS6Re8BMsxjXHF22EE7Fm5VudJh1MRQwk5Sqpm7v7wf0w+MGnqAY6pgFNOQH5P12Xitr5SnMUrzArjKcOW3Qurtm/w3/lJEYEMjIg4gsx1DO8y5a9nge8xCtZI/AI4xz7LXG3UXnwqU5o3PhpMYrP/etGFsX+WQJDfNx7Bxuc+C9CD+Noal6a9aMhY/NQlyKOaDk9jsCBNGXnsuvqLbZYYTXIeO8WuaDYb9A/Da2+26YQNAWFDIPBJVLbvbnfZ5dvtGKXYYqAxSvRaS5WPqz1
+          aws-access-key-id: ASIA6FXGX4FDLUX3NZOO
+          aws-secret-access-key: rd/7YBYY3RarKJ66XngjWQ3tok2MAH3X4SV6dMFE
+          aws-session-token: IQoJb3JpZ2luX2VjEID//////////wEaCXVzLWVhc3QtMiJIMEYCIQCC4rDeZbrumeDCwyGhAL0BLR3Rj/gmgMNpl4kreR1hTQIhAMQJ1Q4E5cplt5XR3ge51tcCKrJZoKTDV3S1v8wdFQTxKoMDCHkQAxoMOTc0MzY3NzQ0MzI2IgxXl0Ayk94MXAPa6F0q4AL15AkNdE8rUvNSOOg9fOnUha7Cb2foiHeACtZSh9ewvxQ/wLFBm96uaRLbQtrkP8WJHie1L5VSGzOTaiJIh2avwKc+cszQ03VIhX4OjcC+37xZz1l0u9z3tmUpS4e4vOijsMd+mbEG7y7hEgh+7nZYx3bN97x5niiBWK86SmJ8VaxkpoP6K0LEjhs6ybKx8y7QP9Qk8Oy+GB42O9+8sRUexQbFCjGg9v5bggnkV33r5Wd1MEcxfbntmpCFAVybgF/TbIwJOrEtceNfB7y8KdR88pFfkW88rn06ZUPvmKeBoLXsQwOl3a3YDOASsotUabSQa7Lrm7ryCL13X8yh4C8XNpmtDRHcAxk3thOGW/y8aFFxeHWEn633kpnAVXwvX4QXw1h3UpJhSSW17T0h445V2dxSt2yVSaJOQz/7zXBgTKIWrIMUyTMrtC6tp7nlnBvdwJWP92/NW2s0PmZCn+NzMIiAzKgGOqUBE4m/T28lpNzbbnclMnyKZt5oP6zdrJ9cvAPWcZwzgb0moWR7DRVEIGcsIjL2O3CQGUaCfvwBTsb/m9fs3AcfZ4ixiorxcHag0ye3xhmQrhEAi2UA9n2Wsz7XH29JBjQuqWG6lRCTYDQ4TT39PpTAymaasFontWWGYKOdx3oyEhGjvT4+1fRwZ3vRqqq72dGyd7pnbM9bqsSI/aKRuQikhbxjLfEe
           aws-region: us-east-2
 
       - name: Login to Amazon ECR
