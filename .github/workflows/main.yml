@@ -18,9 +18,9 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ASIA6FXGX4FDHDC4UD6P
-          aws-secret-access-key: i+t+eX5DITTTNcErn5cNXkjC0g8AZyivuWTqWGdK
-          aws-session-token: IQoJb3JpZ2luX2VjEIX//////////wEaCXVzLWVhc3QtMiJHMEUCIDOOGkaLVjE7hCCqR8POdLACZPjNtkVYc2ipx1B118/QAiEA0r936iXhxEXt8sKzGFT0PXQcMcD09Qfyp/TMQ4L5eLIqgwMIfhADGgw5NzQzNjc3NDQzMjYiDPrS1d7BaMVoNJSvLirgAg9XNUDe9Z3Aic4OqpZuTTlUWA94+0eTUqjPOE/qtl0J15FRQHQTbjy0BGGg9FxqLMwtlk4edfi4NvrUL4AyRBypbH+p7z3lxXbk1j3Rgo3VXdDol2+beldcpaUjVSPdLH/c6ZuI0CSlImEdV8LjWGX1vuOOeCZDUmy5413Hao61xswzkakJnXfnGm6KTnf1QKyX2APZWLEIaKp11OtTim7ttKdmvxLzuLDN7EwZxRBloqXvxxohHnmIDOyFr37ZPbHKKaGPb8hhGoXvRwV2bdswgZ84KQBI/PVmpvsuAH+UGHq0rx8v7rwTLBG1eodys7x6VJuRg9OEhU+jeF11JwOy7tn+uwmkZiIJbSc/zyq9Dn8ypH/KwuxYVIE1iKs9Nn9snUeZ3BZnJXRcU10SDuH5CaGL2UNxza0PajqjGFUChpwf6Kr/Ck4Law21u2weKCsNCETS3VRzu9ciz7eSnbYwqJXNqAY6pgHmdbjpnsdgoLNGWiZ15a679lp7nMwNyNCONDJCPTRwHnICR76jEBdx1Y+eMTaaCV9xNJdU76r0gzof89kFyGW9zBiZgX0NtvOgR7M+e3Vx2kEMtSiW/P//OUXdQub6FZMiOLnwwoBsuaymen66huLiiMEzzs1Tj6nNh6QyD97omj9iQ//O0bIkbVirVUr+ao9PAUqjy4aG8T/mEyVMbj/nMef9pfWe
+          aws-access-key-id: ASIA6FXGX4FDFU2RNAHB
+          aws-secret-access-key: MMDERUTUn4qUkhHvLHyB3Y+JjmwKwV3DHwp5svKW
+          aws-session-token: IQoJb3JpZ2luX2VjEJr//////////wEaCXVzLWVhc3QtMiJHMEUCIQD2kujCcjvb6RSWsN/QFgOsKzn9DFE1CwL/j6be269TdAIgf+WRu/lE+AVkAZAEZQmofxjRwqNk/cIULsUmAzksl1wqjAMIk///////////ARADGgw5NzQzNjc3NDQzMjYiDAbjVPJ1qeWC1z73FSrgAvAPWjSn52jSYTz0VvEV5JiMCJTh1QVWhsAkH2XeawWNCWFHH5kNvg3TxEWEbqyhtLS6QfNjpmhzCBV5wuzKsfMopiv8zyPA7lpBtR8IvA2OCbKnb0t8O9g1DX7B00quOsGgYsDjTByW+N39iQbHaLSPolslblW8k2lSa4uWWLJPfqnue4tiiV/6d0RQ1kVBK2znObkkQSom57w2YQZ7D6t7ZkMxvCcX3DOl+Z6N1TpDBcMp+mm0o7neAVcnDc4wzL6Pd5CnELq/AshLSRBTV8xl7lHZucO0BfGiAlbkYmKt9JO/goEfchnNiCkMpBB84/TJf4wjcO5nRBBA1u+ieL83T97XYrBIZZEOsLO/fxQCODPZcyEctCBi/RMrG2/DpTmontl7qWyUFcgT08D7fl4tPZl38m2Mx6Wg0IOgeBPusJxfc83xjTKXfrR1BZd1q258dQhOpTRHavuSPlMwBsAwtt7RqAY6pgGAgLahLf0gpUnoFnFk65eGZKFhtSMEpeZx9S4/qgppiEKs9cNjb0ZaaPKaMqzPY9vgvUh6WD7unYjiTMn4Uyy7Hai0Q+B0yhHyvIT9seAekgAt2fVS63BUFF6xIHPUi78c7PK9+Y1l65hyt62AsiyWicBxWh2g6ukFiTtuNBikJN266jQKgRexaOxDUR1sXPyx2UdXWr32HaMHMeItG1u/443SRGbK
           aws-region: us-east-2
 
       - name: Login to Amazon ECR
