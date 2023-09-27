@@ -8,6 +8,7 @@ merch the same event triggered on different cable segments. This can be
 achieved with the script `merge_events.py`.
 All parameters can be set in the config file `stalta_params.py`.
 """
+
 import glob
 import numpy as np
 import pandas as pd
