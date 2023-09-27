@@ -163,8 +163,8 @@ def stack_sta_lta_catalogue(st_preproc, st_stats, nr_cfts=100, noverlap=50,
 
 if __name__ == '__main__':
     # Create empty dataframe to append picked event
-    catalogue_df = pd.DataFrame(columns=cols)
     print("HERE")
+    catalogue_df = pd.DataFrame(columns=cols)
     # Loop over all files in the directory
     for file_id in range(0, len(files_list), n_files_load-2):
         if file_id + n_files_load < len(files_list):
