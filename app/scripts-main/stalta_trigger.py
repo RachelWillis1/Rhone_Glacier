@@ -166,8 +166,8 @@ if __name__ == '__main__':
     catalogue_df = pd.DataFrame(columns=cols)
     # Loop over all files in the directory
     for file_id in range(0, len(files_list), n_files_load-2):
-        print("HERE")
         if file_id + n_files_load < len(files_list):
+            print("HERE")
             print('File ID', file_id)
             st = reader(files_list[file_id:file_id+n_files_load],
                         stream=True, channels=channels, h5type='idas2',
