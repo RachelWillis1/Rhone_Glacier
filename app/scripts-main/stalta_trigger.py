@@ -19,7 +19,6 @@ import settings
 # from pydvs.readers import das_reader as reader
 from readers import das_reader as reader
 
-print("HERE")
 # Set multiprocessing method to `fork`, if not default
 mp.set_start_method("fork")
 
@@ -172,6 +171,7 @@ if __name__ == '__main__':
             st = reader(files_list[file_id:file_id+n_files_load],
                         stream=True, channels=channels, h5type='idas2',
                         debug=True)
+            print("HERE")
         else:
             print('End of files probably...')
             continue
