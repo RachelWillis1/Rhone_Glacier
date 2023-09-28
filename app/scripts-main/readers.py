@@ -502,6 +502,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
             print("HERE5")
             i = next(iter_)
             if i == 0:
+                print("HERE6")
                 data, channels, metadata = read_idas2_h5_file(
                     file, stream=False, channels=channels, auxiliary=auxiliary)
             else:
@@ -511,7 +512,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
                 
 
         if stream:
-            print("HERE6")
+            print("HERE7")
             if not merge:
                 warnings.warn(
                     "merge=True was set because of working with the numpy"
