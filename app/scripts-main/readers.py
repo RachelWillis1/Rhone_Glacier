@@ -445,6 +445,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
     for i in range(len(files)-1):
         starttime0, endtime0, fs0, dx0, d00 = peak_h5_idas2_data(files[i])
         starttime1, endtime1, fs1, dx1, d01 = peak_h5_idas2_data(files[i+1])
+        print('HERE-d2')
 
         if (fs0 == fs1) & (dx0 == dx1) & (d00 == d01):
             pass
@@ -472,6 +473,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
         # WORKING WITH STREAM OBJECTS DIRECTLY (one stream per file)
         st = Stream()
         iter_ = (i for i in range(len(files)))
+        print('HERE-d3')
         for file in files:
             i = next(iter_)
             st_tmp = read_idas2_h5_file(
@@ -503,6 +505,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
                 data_tmp, _, _ = read_idas2_h5_file(
                     file, stream=False, channels=channels, auxiliary=auxiliary)
                 data = np.vstack([data, data_tmp])
+                print('HERE-d4')
 
         if stream:
             if not merge:
@@ -525,6 +528,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
                        ("station", ""),
                        ("starttime", starttime))
             trace_dict = {key: value for (key, value) in trace_l}
+            print('HERE-d5')
 
             # Added for correct channel numbers when using fancy indexing
             for i in range(data.shape[1]):
@@ -537,6 +541,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
                     tr.stats.distance = d0 + (channels[i])*dx
                     tr.stats.station = "D" + "{0:05d}".format(channels[i])
                 st.__iadd__(tr)
+                print('HERE-d6')
 
             # for i in range(data.shape[1]):
             #     tr = obspy.Trace(data=data[:, i], header=trace_dict)
@@ -547,9 +552,11 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
 
             if auxiliary:
                 st.metadata = metadata
+                print('HERE-d7')
 
             if sort:
                 st.sort()
+                print('HERE-d8')
             return(st)
 
         else:
