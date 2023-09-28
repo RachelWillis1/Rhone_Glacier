@@ -437,9 +437,10 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
     Returns:
         [type]: [description]
     """
+    print(HERE-d1)
     if not isinstance(files, list):
         files = [files]
-
+    print(HERE-d2)
     for i in range(len(files)-1):
         starttime0, endtime0, fs0, dx0, d00 = peak_h5_idas2_data(files[i])
         starttime1, endtime1, fs1, dx1, d01 = peak_h5_idas2_data(files[i+1])
@@ -464,7 +465,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
             stream = True
             merge = False
             break
-
+    print(HERE-d3)
     if as_stream:
         stream = True
         # WORKING WITH STREAM OBJECTS DIRECTLY (one stream per file)
@@ -489,7 +490,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
         if sort:
             st.sort()
         return st
-
+    print(HERE-d4)
     else:
         iter_ = (i for i in range(len(files)))
         for file in files:
