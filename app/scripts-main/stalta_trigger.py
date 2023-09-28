@@ -168,11 +168,9 @@ if __name__ == '__main__':
     for file_id in range(0, len(files_list), n_files_load-2):
         if file_id + n_files_load < len(files_list):
             print('File ID', file_id)
-            print("HERE")
             st = reader(files_list[file_id:file_id+n_files_load],
                         stream=True, channels=channels, h5type='idas2',
                         debug=True)
-            print("HERE")
         else:
             print('End of files probably...')
             continue
@@ -186,5 +184,5 @@ if __name__ == '__main__':
 
         events_df = stack_sta_lta_catalogue(st_preproc, st[0].stats)
         catalogue_df = pd.concat([catalogue_df, events_df])
-
+        print(catalogue_df)
     catalogue_df.to_csv(settings.output_file)
