@@ -437,9 +437,8 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
     Returns:
         [type]: [description]
     """
-    
+    print("HERE-d1")
     if not isinstance(files, list):
-        print('HERE-d1')
         files = [files]
     
     for i in range(len(files)-1):
