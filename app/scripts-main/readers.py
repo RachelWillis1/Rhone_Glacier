@@ -499,6 +499,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
         print("HERE4")
         iter_ = (i for i in range(len(files)))
         for file in files:
+            print("HERE5")
             i = next(iter_)
             if i == 0:
                 data, channels, metadata = read_idas2_h5_file(
@@ -510,7 +511,6 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
                 
 
         if stream:
-            print("HERE5")
             if not merge:
                 warnings.warn(
                     "merge=True was set because of working with the numpy"
