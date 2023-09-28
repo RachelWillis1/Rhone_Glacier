@@ -324,81 +324,49 @@ def read_h5_asdf_files(files, stream=True, channels=[0, -1], auxiliary=True,
     """
 
     if not isinstance(files, list):
-        print('HERE-d1')
         files = [files]
-        print('HERE-d2')
 
     for i in range(len(files)-1):
-        print('HERE-d3')
         starttime0, endtime0, fs0, dx0, d00 = peak_h5_asdf_data(files[i])
-        print('HERE-d4')
         starttime1, endtime1, fs1, dx1, d01 = peak_h5_asdf_data(files[i+1])
-        print('HERE-d5')
 
         if (fs0 == fs1) & (dx0 == dx1) & (d00 == d01):
-            print('HERE-d6')
             pass
-            print('HERE-d7')
         else:
-            print('HERE-d8')
             warnings.warn(("Different acquisition parameters. \n>> falling"
                           + "back to merge=False"), UserWarning)
-            print('HERE-d9')
             merge = False
-            print('HERE-d10')
 
         if starttime1 == endtime0+(1./fs1):
-            print('HERE-d11')
             pass
-            print('HERE-d12')
         else:
-            print('HERE-d13')
             warnings.warn(("Misaligned data (gaps or overlap).\n>> Falling"
                           + "back to merge=False"), UserWarning)
-            print('HERE-d14')
             merge = False
-            print('HERE-d15')
 
     # WORKING WITH STREAM OBJECTS DIRECTLY (one stream per file)
-    print('HERE-d16')
     st = Stream()
     iter_ = (i for i in range(len(files)))
-    print('HERE-d17')
     for file in files:
-        print('HERE-d18')
         i = next(iter_)
         st_tmp = read_h5_asdf_file(
             file, stream=stream, channels=channels, auxiliary=auxiliary)
-        print('HERE-d19')
         st += st_tmp
-        print('HERE-d20')
         if i == 0:
-            print('HERE-d21')
             if auxiliary:
-                print('HERE-d22')
                 st.metadata = st_tmp.metadata
-                print('HERE-d23')
-    print('HERE-d24')
+
     if merge:
-        print('HERE-d25')
         if not st.get_gaps():
-            print('HERE-d26')
             st.merge(method=1).sort()
-            print('HERE-d27')
         else:
-            print('HERE-d28')
             warnings.warn(("Gaps or overlap in the data."
                            + "Returned stream object is not merged!"),
                           UserWarning)
-            print('HERE-d29')
             if True:
-                print('HERE-d30')
                 st.print_gaps()
-                print('HERE-d31')
     if sort:
-        print('HERE-d32')
         st.sort()
-        print('HERE-d33')
     return st
 
 
