@@ -515,7 +515,6 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
         if stream:
             print("HERE8")
             if not merge:
-                print("HERE9")
                 warnings.warn(
                     "merge=True was set because of working with the numpy"
                     + "arrays", UserWarning)
@@ -539,7 +538,6 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
 
             # Added for correct channel numbers when using fancy indexing
             for i in range(data.shape[1]):
-                print("HERE10")
                 tr = obspy.Trace(data=data[:, i], header=trace_dict)
                 if len(channels) == 2:
                     tr.stats.distance = d0 + (i+channels[0])*dx
@@ -559,6 +557,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
             #     st.__iadd__(tr)
 
             if auxiliary:
+                print("HERE9")
                 st.metadata = metadata
                 
 
