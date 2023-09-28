@@ -598,7 +598,9 @@ def das_reader(files, auxiliary=True, sort=True, merge=True,
     if h5type not in ['asdf', 'native', 'idas2']:
         sys.exit('Invalid h5type specified')
     if debug:
+        print('HERE-a')
         print('\U0001F50D Reading in: \n', files)
+        print('HERE-b')
     if h5type == 'native':
         if stream:
             st = read_h5_native_files(files, auxiliary=auxiliary, sort=sort,
@@ -617,20 +619,29 @@ def das_reader(files, auxiliary=True, sort=True, merge=True,
             return (data, channels, metadata)
 
     if h5type == 'idas2':
+        print('HERE-c')
         if stream:
+            print('HERE-d')
             st = read_idas2_h5_files(files, auxiliary=auxiliary, sort=sort,
                                      merge=merge, stream=stream,
                                      as_stream=as_stream, channels=channels)
+            print('HERE-e')
             if debug:
+                print('HERE-f')
                 print("\U00002714 success")
+                print('HERE-g')
             return st
         else:
+            print('HERE-h')
             data, channels, metadata = read_idas2_h5_files(
                 files, auxiliary=auxiliary, sort=sort, merge=merge,
                 stream=stream, as_stream=as_stream, channels=channels
                 )
+            print('HERE-i')
             if debug:
+                print('HERE-j')
                 print("\U00002714 success")
+                print('HERE-k')
             return (data, channels, metadata)
 
     if h5type == 'asdf':
