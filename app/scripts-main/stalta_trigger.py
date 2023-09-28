@@ -171,10 +171,12 @@ if __name__ == '__main__':
             st = reader(files_list[file_id:file_id+n_files_load],
                         stream=True, channels=channels, h5type='idas2',
                         debug=True)
+            print(st)
         else:
+            print('HERE')
             print('End of files probably...')
             continue
-
+        print('HERE1')
         print('Pre-process data')
         pool = mp.Pool(settings.n_processes)
         st_preproc = pool.map(preproc, range(nrTr))
