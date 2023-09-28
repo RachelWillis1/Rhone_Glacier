@@ -437,14 +437,13 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
     Returns:
         [type]: [description]
     """
-    print('HERE d-1')
     if not isinstance(files, list):
         files = [files]
-    print('HERE d-2')
+
     for i in range(len(files)-1):
         starttime0, endtime0, fs0, dx0, d00 = peak_h5_idas2_data(files[i])
         starttime1, endtime1, fs1, dx1, d01 = peak_h5_idas2_data(files[i+1])
-        print('HERE d-3')
+
         if (fs0 == fs1) & (dx0 == dx1) & (d00 == d01):
             pass
         else:
@@ -455,7 +454,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
             stream = True
             merge = False
             break
-        print('HERE d-4')
+
         if starttime1 == endtime0+(1./fs1):
             pass
         else:
@@ -465,55 +464,44 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
             stream = True
             merge = False
             break
-    print('HERE d-5')
+
     if as_stream:
         stream = True
         # WORKING WITH STREAM OBJECTS DIRECTLY (one stream per file)
         st = Stream()
         iter_ = (i for i in range(len(files)))
-        print('HERE d-6')
         for file in files:
             i = next(iter_)
             st_tmp = read_idas2_h5_file(
                 file, stream=stream, channels=channels, auxiliary=auxiliary)
             st += st_tmp
-            print('HERE d-7')
             if i == 0:
                 st.metadata = st_tmp.metadata
-                print('HERE d-8')
-        print('HERE d-9')
+
         if merge:
-            print('HERE d-10')
             if not st.get_gaps():
                 st.merge(method=1).sort()
-            print('HERE d-11')
             else:
                 warnings.warn("Gaps or overlap in the data. Returned stream"
                               + "object is not merged!", UserWarning)
-                print('HERE d-12')
                 if True:
                     st.print_gaps()
-        print('HERE d-13')
         if sort:
             st.sort()
-            print('HERE d-14')
         return st
-    print('HERE d-15')
+
     else:
         iter_ = (i for i in range(len(files)))
-        print('HERE d-16')
         for file in files:
             i = next(iter_)
-            print('HERE d-17')
             if i == 0:
                 data, channels, metadata = read_idas2_h5_file(
                     file, stream=False, channels=channels, auxiliary=auxiliary)
-            print('HERE d-18')
             else:
                 data_tmp, _, _ = read_idas2_h5_file(
                     file, stream=False, channels=channels, auxiliary=auxiliary)
                 data = np.vstack([data, data_tmp])
-        print('HERE d-19')
+
         if stream:
             if not merge:
                 warnings.warn(
@@ -537,7 +525,6 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
             trace_dict = {key: value for (key, value) in trace_l}
 
             # Added for correct channel numbers when using fancy indexing
-            print('HERE d-20')
             for i in range(data.shape[1]):
                 tr = obspy.Trace(data=data[:, i], header=trace_dict)
                 if len(channels) == 2:
@@ -555,17 +542,15 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
             #     tr.stats.channel = "ESN"
             #     tr.stats.station = "D" + "{0:05d}".format(i+channels[0])
             #     st.__iadd__(tr)
-            print('HERE d-21')
+
             if auxiliary:
                 st.metadata = metadata
-            print('HERE d-22')
+
             if sort:
                 st.sort()
-                print('HERE d-23')
             return(st)
-        print('HERE d-24')
+
         else:
-            print('HERE d-25')
             return(data, channels, metadata)
 
 
