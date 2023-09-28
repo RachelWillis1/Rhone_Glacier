@@ -539,6 +539,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
 
             # Added for correct channel numbers when using fancy indexing
             for i in range(data.shape[1]):
+                print("HERE10")
                 tr = obspy.Trace(data=data[:, i], header=trace_dict)
                 if len(channels) == 2:
                     tr.stats.distance = d0 + (i+channels[0])*dx
