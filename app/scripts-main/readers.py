@@ -562,6 +562,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
                 
 
             if sort:
+                print("HERE10")
                 st.sort()
             return(st)
 
