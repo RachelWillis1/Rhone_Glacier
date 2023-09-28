@@ -513,8 +513,9 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
                 
 
         if stream:
-            print("HERE7")
+            print("HERE8")
             if not merge:
+                print("HERE9")
                 warnings.warn(
                     "merge=True was set because of working with the numpy"
                     + "arrays", UserWarning)
