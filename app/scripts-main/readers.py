@@ -524,7 +524,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
                               + "object is not merged!", UserWarning)
                 print('HERE d-12')
                 if True:
-                   st.print_gaps()
+                    st.print_gaps()
         print('HERE d-13')
         if sort:
             st.sort()
