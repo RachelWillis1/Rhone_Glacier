@@ -445,7 +445,6 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
     for i in range(len(files)-1):
         starttime0, endtime0, fs0, dx0, d00 = peak_h5_idas2_data(files[i])
         starttime1, endtime1, fs1, dx1, d01 = peak_h5_idas2_data(files[i+1])
-        print('HERE-d2')
 
         if (fs0 == fs1) & (dx0 == dx1) & (d00 == d01):
             pass
@@ -556,7 +555,6 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
 
             if sort:
                 st.sort()
-                
             return(st)
 
         else:
