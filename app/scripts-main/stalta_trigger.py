@@ -165,6 +165,8 @@ if __name__ == '__main__':
     # Create empty dataframe to append picked event
     catalogue_df = pd.DataFrame(columns=cols)
     # Loop over all files in the directory
+    print(files_list)
+    print(n_files_load)
     for file_id in range(0, len(files_list), n_files_load-2):
         if file_id + n_files_load < len(files_list):
             print('File ID', file_id)
