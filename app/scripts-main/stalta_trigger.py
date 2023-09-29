@@ -31,8 +31,7 @@ except RuntimeError:
    pass
 
 # Specify data directory
-directory = "/Users/rachelwillis/myDocuments/CSMresearch/Rhone_Glacier/DAS_Data_hdf5/"
-# directory = settings.data_directory
+directory = settings.data_directory
 
 print('---')
 print('reading files from:')
