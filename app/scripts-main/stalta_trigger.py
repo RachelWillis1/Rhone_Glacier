@@ -8,7 +8,9 @@ merch the same event triggered on different cable segments. This can be
 achieved with the script `merge_events.py`.
 All parameters can be set in the config file `stalta_params.py`.
 """
+from pathlib import Path
 
+import sys
 import glob
 import numpy as np
 import pandas as pd
@@ -20,12 +22,17 @@ import settings
 # from pydvs.readers import das_reader as reader
 from readers import das_reader as reader
 
+
 # Set multiprocessing method to `fork`, if not default
-mp.set_start_method("fork")
+try:
+   mp.set_start_method('fork')
+   print("fork")
+except RuntimeError:
+   pass
 
 # Specify data directory
-# directory = "/Users/stanekfr/Documents/Work/MINES/DOE_EileenJin/FS_work/Rhonegletscher_FS/DAS_data/"
-directory = settings.data_directory
+directory = "/Users/rachelwillis/myDocuments/CSMresearch/Rhone_Glacier/DAS_Data_hdf5/"
+# directory = settings.data_directory
 
 print('---')
 print('reading files from:')
@@ -164,21 +171,23 @@ def stack_sta_lta_catalogue(st_preproc, st_stats, nr_cfts=100, noverlap=50,
 if __name__ == '__main__':
     # Create empty dataframe to append picked event
     catalogue_df = pd.DataFrame(columns=cols)
+
     # Loop over all files in the directory
-    print(files_list)
-    print(n_files_load)
     for file_id in range(0, len(files_list), n_files_load-2):
         if file_id + n_files_load < len(files_list):
+            files_to_read = files_list[file_id:file_id+n_files_load]
             print('File ID', file_id)
-            st = reader(files_list[file_id:file_id+n_files_load],
-                        stream=True, channels=channels, h5type='idas2',
-                        debug=True)
+            try:
+                st = reader(files_to_read,
+                            stream=True, channels=channels, h5type='idas2',
+                            debug=True)
+            except:
+                print(f"Failed to read {files_to_read}")
             print(st)
         else:
-            print('HERE')
             print('End of files probably...')
             continue
-        print('HERE1')
+
         print('Pre-process data')
         pool = mp.Pool(settings.n_processes)
         st_preproc = pool.map(preproc, range(nrTr))
@@ -188,5 +197,8 @@ if __name__ == '__main__':
 
         events_df = stack_sta_lta_catalogue(st_preproc, st[0].stats)
         catalogue_df = pd.concat([catalogue_df, events_df])
-        print(catalogue_df)
-    catalogue_df.to_csv(settings.output_file)
+    
+    
+    path = Path(settings.output_file)
+    path.parent.mkdir(exist_ok=True, parents=True)
+    catalogue_df.to_csv(path)
