@@ -567,8 +567,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
             return(st)
 
         else:
-            print("HERE11")
-            return(data, channels, metadata)
+            return(print(data), channels, metadata)
 
 
 def das_reader(files, auxiliary=True, sort=True, merge=True,
