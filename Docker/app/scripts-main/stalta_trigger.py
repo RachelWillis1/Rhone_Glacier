@@ -185,4 +185,6 @@ if __name__ == '__main__':
         events_df = stack_sta_lta_catalogue(st_preproc, st[0].stats)
         catalogue_df = pd.concat([catalogue_df, events_df])
 
+    print(setting.output_file)
+    print(len(catalogue_df))
     catalogue_df.to_csv(settings.output_file)
