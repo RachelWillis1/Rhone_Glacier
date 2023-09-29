@@ -417,6 +417,7 @@ def read_idas2_h5_file(file, stream=True, channels=[0, -1], auxiliary=True):
 
             return(st)
         else:
+            print(data)
             return(data, channels, metadata)
 
 
