@@ -567,7 +567,7 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
             return(st)
 
         else:
-            return(print(data), channels, metadata)
+            return(data, channels, metadata)
 
 
 def das_reader(files, auxiliary=True, sort=True, merge=True,
@@ -641,6 +641,7 @@ def das_reader(files, auxiliary=True, sort=True, merge=True,
             st = read_idas2_h5_files(files, auxiliary=auxiliary, sort=sort,
                                      merge=merge, stream=stream,
                                      as_stream=as_stream, channels=channels)
+            print(st)
             print('HERE-e')
             if debug:
                 print('HERE-f')
