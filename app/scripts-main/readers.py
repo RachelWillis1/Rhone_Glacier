@@ -505,12 +505,13 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
                 print("HERE6")
                 data, channels, metadata = read_idas2_h5_file(
                     file, stream=False, channels=channels, auxiliary=auxiliary)
+                print(data)
             else:
                 print("HERE7")
                 data_tmp, _, _ = read_idas2_h5_file(
                     file, stream=False, channels=channels, auxiliary=auxiliary)
                 data = np.vstack([data, data_tmp])
-                
+                print(data)
 
         if stream:
             print("HERE8")
