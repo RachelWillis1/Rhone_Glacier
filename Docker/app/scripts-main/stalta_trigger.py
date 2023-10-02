@@ -12,6 +12,7 @@ import glob
 import numpy as np
 import pandas as pd
 import multiprocessing as mp
+from functools import partial
 import json
 from scipy.signal import iirfilter, zpk2sos, sosfilt, hann
 from obspy.signal.trigger import recursive_sta_lta, trigger_onset
@@ -76,7 +77,7 @@ cols = ['t_start', 't_end', 'first_station', 'last_station', 'SNR']
 # Define preprocessing function for parallel implementation.
 # This function can be modified to include more sophisticated preprocessing
 # steps (AGC, whitening, etc.)
-def preproc(tr_id, dec_factor=dec_factor):
+def preproc(st, tr_id, dec_factor=dec_factor):
     """Taper, filter and decimate stream"""
     tapered = st[tr_id].data * taper
     filtered = sosfilt(sos, tapered)
@@ -168,6 +169,7 @@ if __name__ == '__main__':
     for file_id in range(0, len(files_list), n_files_load-2):
         if file_id + n_files_load < len(files_list):
             print('File ID', file_id)
+            
             st = reader(files_list[file_id:file_id+n_files_load],
                         stream=True, channels=channels, h5type='idas2',
                         debug=True)
@@ -176,8 +178,10 @@ if __name__ == '__main__':
             continue
 
         print('Pre-process data')
+        print(st)
         pool = mp.Pool(settings.n_processes)
-        st_preproc = pool.map(preproc, range(nrTr))
+        partial = partial(preproc,st)
+        st_preproc = pool.map(partial, range(nrTr))
         pool.close()
         print('Finished pre-processing.')
         print('Start picking from:' + str(st[0].stats.starttime))
@@ -185,6 +189,4 @@ if __name__ == '__main__':
         events_df = stack_sta_lta_catalogue(st_preproc, st[0].stats)
         catalogue_df = pd.concat([catalogue_df, events_df])
 
-    print(setting.output_file)
-    print(len(catalogue_df))
     catalogue_df.to_csv(settings.output_file)
