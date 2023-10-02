@@ -440,10 +440,8 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
     
     if not isinstance(files, list):
         files = [files]
-        print("HERE1")
     
     for i in range(len(files)-1):
-        print("HERE2")
         starttime0, endtime0, fs0, dx0, d00 = peak_h5_idas2_data(files[i])
         starttime1, endtime1, fs1, dx1, d01 = peak_h5_idas2_data(files[i+1])
 
@@ -469,7 +467,6 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
             break
     
     if as_stream:
-        print("HERE3")
         stream = True
         # WORKING WITH STREAM OBJECTS DIRECTLY (one stream per file)
         st = Stream()
@@ -496,25 +493,20 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
         return st
     
     else:
-        print("HERE4")
         iter_ = (i for i in range(len(files)))
         for file in files:
-            print("HERE5")
             i = next(iter_)
             if i == 0:
-                print("HERE6")
                 data, channels, metadata = read_idas2_h5_file(
                     file, stream=False, channels=channels, auxiliary=auxiliary)
                 print(data)
             else:
-                print("HERE7")
                 data_tmp, _, _ = read_idas2_h5_file(
                     file, stream=False, channels=channels, auxiliary=auxiliary)
                 data = np.vstack([data, data_tmp])
                 print(data)
 
         if stream:
-            print("HERE8")
             if not merge:
                 warnings.warn(
                     "merge=True was set because of working with the numpy"
@@ -558,12 +550,10 @@ def read_idas2_h5_files(files, as_stream=False, stream=True, channels=[0, -1],
             #     st.__iadd__(tr)
 
             if auxiliary:
-                print("HERE9")
                 st.metadata = metadata
                 
 
             if sort:
-                print("HERE10")
                 st.sort()
             return(st)
 
@@ -616,9 +606,7 @@ def das_reader(files, auxiliary=True, sort=True, merge=True,
     if h5type not in ['asdf', 'native', 'idas2']:
         sys.exit('Invalid h5type specified')
     if debug:
-        print('HERE-a')
         print('\U0001F50D Reading in: \n', files)
-        print('HERE-b')
     if h5type == 'native':
         if stream:
             st = read_h5_native_files(files, auxiliary=auxiliary, sort=sort,
@@ -637,30 +625,20 @@ def das_reader(files, auxiliary=True, sort=True, merge=True,
             return (data, channels, metadata)
 
     if h5type == 'idas2':
-        print('HERE-c')
         if stream:
-            print('HERE-d')
             st = read_idas2_h5_files(files, auxiliary=auxiliary, sort=sort,
                                      merge=merge, stream=stream,
                                      as_stream=as_stream, channels=channels)
-            print(st)
-            print('HERE-e')
             if debug:
-                print('HERE-f')
                 print("\U00002714 success")
-                print('HERE-g')
             return st
         else:
-            print('HERE-h')
             data, channels, metadata = read_idas2_h5_files(
                 files, auxiliary=auxiliary, sort=sort, merge=merge,
                 stream=stream, as_stream=as_stream, channels=channels
                 )
-            print('HERE-i')
             if debug:
-                print('HERE-j')
                 print("\U00002714 success")
-                print('HERE-k')
             return (data, channels, metadata)
 
     if h5type == 'asdf':
