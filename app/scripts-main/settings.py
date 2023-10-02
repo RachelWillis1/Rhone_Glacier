@@ -5,7 +5,7 @@
 data_directory = ("../sharedfolder/input/DAS_data/")
 
 #output_file = "../sharedfolder/output/catalogue_raw_temp.csv"
-output_file = "../sharedfolder/catalogue_raw_temp.csv"
+output_file = "../sharedfolder/output/catalogue_raw_temp.csv"
 channel_file = "channels_to_read_new.json"
 
 #
